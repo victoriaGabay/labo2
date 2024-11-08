@@ -34,8 +34,8 @@ public abstract class EmailForm {
         this.btnSave = new ActionButton("Enviar") {
             @Override
             public void doSomething() {
-                String to = (String) contactsCombo.getItemAt(contactsCombo.getSelectedIndex());
-                Email email = new Email(from ,to, txtSubject.getText(),txtBody.getText(), host, EmailTypes.Outbox, userId);
+                String to = (String) contactsCombo.getItemAt(contactsCombo.getSelectedIndex()); //la poronga que hace JCombo para traerte el item que seleccionaste
+                Email email = new Email(from ,to, txtSubject.getText(),txtBody.getText(), host, EmailTypes.Outbox, userId); //nueva instancia de email. Mediante el constructor con parametros le indico que valores deben tomar los atributos.
                 saveChanges(email);
             }
         };
@@ -81,23 +81,23 @@ public abstract class EmailForm {
 
     protected void setToViewDetails(boolean canEdit) {
         if(!canEdit) {
-            this.txtBody.setEditable(false);
-            this.txtTo.setEditable(false);
-            this.txtSubject.setEditable(false);
-            this.btnSave.get().setEnabled(false);
-            this.contactsCombo.setEnabled(false);
+            this.txtBody.setEditable(false); //pelotudeces de la libreria Java swing para que no puedas editar un input xD
+            this.txtTo.setEditable(false); //pelotudeces de la libreria Java swing para que no puedas editar un input xD
+            this.txtSubject.setEditable(false); //pelotudeces de la libreria Java swing para que no puedas editar un input xD
+            this.btnSave.get().setEnabled(false); //pelotudeces de la libreria Java swing para que no puedas editar un input xD
+            this.contactsCombo.setEnabled(false); //pelotudeces de la libreria Java swing para que no puedas editar un input xD
         }
     }
 
     protected void showData(Email email){
-        this.txtBody = new JTextField(email.getBody());
-        this.txtTo = new JTextField(email.getTo());
-        this.txtSubject = new JTextField(email.getSubject());
-        this.txtFrom = new JTextField(email.getFrom());
-        this.txtHost = new JTextField(email.getHost());
+        this.txtBody = new JTextField(email.getBody()); //pelotudeces de java swing para mostrar los datos
+        this.txtTo = new JTextField(email.getTo()); //pelotudeces de java swing para mostrar los datos
+        this.txtSubject = new JTextField(email.getSubject()); //pelotudeces de java swing para mostrar los datos
+        this.txtFrom = new JTextField(email.getFrom()); //pelotudeces de java swing para mostrar los datos
+        this.txtHost = new JTextField(email.getHost()); //pelotudeces de java swing para mostrar los datos
     }
 
-    protected void modifyCombo(String to, boolean clean){
+    protected void modifyCombo(String to, boolean clean){ //metodo para popular el dropwdown con los valores correspondientes :)
         if(clean) {
             this.contactsCombo.removeAllItems();
             this.contactsCombo.addItem(new ComboItem("0", to));
@@ -122,7 +122,7 @@ public abstract class EmailForm {
 
     public abstract void saveChanges(Email email);
 
-    private void getContactsUserName(int accountId){
+    private void getContactsUserName(int accountId){ //me traigo todos los contactos asociados al usuario
         ArrayList<String> usernames = new ArrayList<>();
 
         try{

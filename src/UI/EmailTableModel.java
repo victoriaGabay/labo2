@@ -36,7 +36,7 @@ public class EmailTableModel extends AbstractTableModel {
         Email u = content.get(rowIndex);
 
         Object result = null;
-        switch(columnIndex) {
+        switch(columnIndex) { //row 0: col from: content[0].from
             case FROM_COLUMN:
                 result = u.getFrom();
                 break;

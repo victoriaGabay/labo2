@@ -16,15 +16,15 @@ public class FrameManager {
     private User user;
 
     public void setManager(){
-        this.frame = new JFrame("Mails");
-        this.frame.setBounds(100, 100, 500, 500);
-        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.homePage = new HomePage(this);
-        this.newEmailPage = new NewEmailPage(this);
-        this.loginPage = new LoginPage(this);
-        this.registerPage = new RegisterNewUserPage(this);
-        this.contactsPage = new ContactsPage(this);
-        this.configuration = new Configuration(this);
+        this.frame = new JFrame("Mails"); //nueva instancia de clase
+        this.frame.setBounds(100, 100, 500, 500); //atributos de la clase JFrame, cuyo objetos this.frame
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//atributos de la clase JFrame, cuyo objetos this.frame
+        this.homePage = new HomePage(this);// nueva instancia de clase
+        this.newEmailPage = new NewEmailPage(this);// nueva instancia de clase
+        this.loginPage = new LoginPage(this);// nueva instancia de clase
+        this.registerPage = new RegisterNewUserPage(this);// nueva instancia de clase
+        this.contactsPage = new ContactsPage(this);// nueva instancia de clase
+        this.configuration = new Configuration(this);// nueva instancia de clase
 
         UIManager.put("OptionPane.cancelButtonText", "Cancelar");
         UIManager.put("OptionPane.noButtonText", "No");
@@ -38,7 +38,6 @@ public class FrameManager {
 
     public void showHomePage(EmailTypes type){
         this.frame.getContentPane().removeAll();
-        this.homePage = new HomePage(this);
         this.frame.getContentPane().add(this.homePage.buildHomePage(type));
         this.frame.getContentPane().validate();
         this.frame.getContentPane().repaint();

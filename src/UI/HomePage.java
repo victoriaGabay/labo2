@@ -35,10 +35,11 @@ public class HomePage extends JTree implements ActionListener {
     }
 
     public JPanel buildHomePage(EmailTypes listToShow){
-        this.menuPanel.add(this.table.armarPanel(listToShow), BorderLayout.CENTER);
+        this.menuPanel.add(this.table.armarPanel(listToShow), BorderLayout.CENTER); //arma el panel para el cosito seleccionado (enviados/borradores/etc)
         this.table.activateActionListener();
         this.treePanel.add(this.menuPanel, BorderLayout.CENTER);
 
+        //obligo al boton a implementar el metodo doSomething utilizado por la clase ACtionButton (la que contine el Jbutton)
         this.btnReload = new ActionButton("Cerrar Sesión") {
             @Override
             public void doSomething() {
@@ -90,7 +91,7 @@ public class HomePage extends JTree implements ActionListener {
         JTree jt=new JTree(this.main);
         panel.add(jt, BorderLayout.WEST);
 
-        jt.addTreeSelectionListener(evt -> jTree1ValueChanged(evt));
+        jt.addTreeSelectionListener(evt -> jTree1ValueChanged(evt)); //genera el action listener para que cuando apretes el boton(el cosito) hsgs slgo
         return panel;
     }
 
@@ -109,7 +110,7 @@ public class HomePage extends JTree implements ActionListener {
     }
 
     public void jTree1ValueChanged( TreeSelectionEvent tse ) {
-        String node = tse.getNewLeadSelectionPath().getLastPathComponent().toString();
+        String node = tse.getNewLeadSelectionPath().getLastPathComponent().toString(); //logica native de jtree para saber que cosito se apreto
         if(node.equals("Recibidos")) {
             manager.showHomePage(EmailTypes.Recieved);
         }
