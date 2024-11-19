@@ -24,8 +24,13 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T>{
         this.excecutePersistentChanges(query);
     }
 
+    //Cada DAO tiene su propio T, por ende cada uno debe mappear sus resultados de forma distinto
     public abstract T mapEntity(ResultSet resultSet) throws SQLException;
 
+
+    /*
+    Tanto get como getAll invocan al mismo metodo. La diferencia es la query y como manipulo los resultados. 
+    */
     @Override
     public T get(String query) throws DAOException {
         T result = null;
@@ -50,6 +55,8 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T>{
     }
 
 
+        //tst es para ser invocada la primera vez que se levanta el programa para asi crear las tablas necesarias.
+        //se llama tst porque estaba cansada JAJAJ
         @Override
         public void tst () throws DAOException {
             try {
@@ -68,6 +75,7 @@ public abstract class GenericDAOImpl<T> implements GenericDAO<T>{
             }
         }
 
+        //INSERT, UPDATE, DELETE. Toddos manejan la misma logica base, asi que tengo un solo metodo que ejecuta la query.
         private void excecutePersistentChanges (String query) throws CannotCloseConnection, RollbackException, CannotSaveException {
             Connection con = DBManager.connect();
 

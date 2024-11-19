@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+//implemento la interfaz de GEnericDao para la entidad Email.
+//La estructura de todos los DAOs es muy parecida entre si, lo que permite legibilidad, entendimiento y facil matenimiento
 public class EmailDAO extends GenericDAOImpl<Email> {
 
     public void create(String query) throws DAOException {
@@ -37,6 +39,9 @@ public class EmailDAO extends GenericDAOImpl<Email> {
         }
     }
 
+
+    //ACA ESTA mapEntity() Toma un ResultSet y busca los campos necesarios
+    //EmailDAO.mapEntity() y UsersDAO.mapEntity() van a ser SIEMPRE disitntos, ya que T es distinto
     @Override
     public Email mapEntity(ResultSet resultSet) throws SQLException {
 

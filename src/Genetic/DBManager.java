@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+//COSAS OBLIGATORIAS PARA QUE H2 FUNQUE. Busque en la documentacion y eso decia.... no me importa que hace cada metodo adentro.
 public class DBManager {
     private static final String DB_DRIVER = "org.h2.Driver";
     private static final String DB_BASE_URL = "jdbc:h2:tcp://localhost//{DIR}";

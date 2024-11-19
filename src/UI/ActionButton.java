@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//Me evito tener que agregar el action listener cada vez que creo un boton. 
+//Obligo a todos los botones a definir doSomething() y nada mas. Limpia un poco el codigo y evita repeticiones
 public abstract class ActionButton {
     private JButton actionButton;
 

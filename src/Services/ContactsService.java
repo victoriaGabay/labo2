@@ -7,6 +7,7 @@ import Exceptions.ServiceException;
 
 import java.util.List;
 
+//Servicio de contactos. Se encarga de construir la query y de invocar al metodo necesario
 public class ContactsService {
 
     private final ContactsDAO dao = new ContactsDAO();
@@ -17,6 +18,7 @@ public class ContactsService {
         try{
             return this.dao.getAll(query);
         } catch (DAOException e) {
+            //Algo salio mal en el metodo this.dao.getAll(query). Tomo el error a nivel DAO y lo devuelvo como un Service exception.
             throw new ServiceException(e.getMessage());
         }
     }
@@ -34,7 +36,7 @@ public class ContactsService {
             if(exists == null)
                 this.dao.create(query);
             else
-                throw new ServiceException("El usuario ya figura como un contacto");
+                throw new ServiceException("El usuario ya figura como un contacto"); //el metodo this.dao.create corrio exitosamente, pero el resultado es considerado un error. Tiro un serice exception
 
         } catch (DAOException e) {
             throw new ServiceException(e.getMessage());
